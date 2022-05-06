@@ -1,0 +1,8 @@
+global:
+  scrape_interval:     1m
+  evaluation_interval:	1m
+
+scrape_configs:
+  - job_name: "node"
+    static_configs:
+    - targets: ["192.168.81.162:9100"]
