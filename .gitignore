@@ -1,2 +1,2 @@
-netbox/.git/*
-netbox/.gitignore
+netbox/
+!netbox/docker-compose.yml
