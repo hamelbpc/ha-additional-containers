@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  home-assistant:
+    container_name: homeassistantplayground
+    image: ghcr.io/linuxserver/homeassistant
+    restart: unless-stopped
+    ports:
+      - 8124:8123
+    volumes:
+      - homeassistantplayground:/config
+    environment:
+      - PUID:1000
+      - PGID:1000
+      - TZ=Australia/Melbourne
+
+volumes:
+  homeassistantplayground:
