@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+
+  adminer:
+    container_name: adminer
+    image: adminer
+    restart: always
+    ports:
+      - 8087:8080
+    networks:
+      - adminer
+
+networks:
+  adminer:
+    name: adminer
+    driver: bridge
+
