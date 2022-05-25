@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-systemctl disable docker-compose@$1
+container=${1//\/}
+systemctl disable docker-compose@$container

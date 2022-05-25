@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  postgresql:
+    container_name: postgresql
+    image: postgres:14-alpine
+    #ports:
+    #  - 5432:5432
+    volumes:
+      - postgresql:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres14
+    networks:
+      - pgadmin
+
+volumes:
+  postgresql:
+
+networks:
+  pgadmin:
+    external:
+      name: pgadmin
+    

@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-systemctl enable docker-compose@$1
+container=${1//\/}
+systemctl enable docker-compose@$container

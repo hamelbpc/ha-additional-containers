@@ -4,7 +4,7 @@ services:
   octoprint:
     container_name: octoprint
     image: octoprint/octoprint
-    restart: unless-stopped
+    #restart: unless-stopped
     ports:
       - 9500:80
     #devices:

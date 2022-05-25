@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 set -x
 
-systemctl stop docker-compose@$1
+container=${1//\/}
+systemctl stop docker-compose@$container
