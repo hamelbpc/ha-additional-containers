@@ -1,0 +1,69 @@
+version: '3.7'
+
+services:
+  homeassistantltss:
+    container_name: homeassistantltss
+    image: ghcr.io/linuxserver/homeassistant
+    restart: unless-stopped
+    ports:
+      - 8125:8123
+    volumes:
+      - homeassistantltss:/config
+    environment:
+      - PUID:1000
+      - PGID:1000
+      - TZ=Australia/Melbourne
+    networks:
+      - homeassistantltss
+    depends_on:
+      - homeassistantltssrecorder
+      - homeassistantltssdb
+
+  homeassistantltssrecorder:
+    container_name: homeassistantltssrecorder
+    image: mariadb
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: mariadb
+      MARIADB_USER: user
+      MARIADB_PASSWORD: password
+      MARIADB_ROOT_PASSWORD: password  
+    volumes:
+      - homeassistantltssrecorder:/var/lib/mysql
+    networks:
+      - homeassistantltss
+      - adminer
+
+  homeassistantltssdb:
+    container_name: homeassistantltssdb
+    image: timescale/timescaledb:latest-pg14
+    volumes:
+      - homeassistantltssdb:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DATABASE=timescaledb
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    networks:
+      - homeassistantltss
+      - pgadmin
+
+volumes:
+  homeassistantltss:
+  homeassistantltssrecorder:
+  homeassistantltssdb:
+
+networks:
+  homeassistantltss:
+    name: homeassistantltss
+    driver: bridge
+
+  adminer:
+    external:
+      name: adminer
+
+  pgadmin:
+    external:
+      name: pgadmin
+
+
+   

@@ -12,11 +12,16 @@ services:
       - MYSQL_ROOT_PASSWORD=password
     env_file:
       - db.env
+    networks:
+      - nextcloud
+      - adminer
 
   nextcloudredis:
     container_name: nextcloudredis
     image: redis:alpine
     restart: always
+    networks:
+      - nextcloud
 
   app:
     container_name: nextcloud
@@ -34,6 +39,8 @@ services:
     depends_on:
       - nextclouddb
       - nextcloudredis
+    networks:
+      - nextcloud
 
   cron:
     container_name: nextcloudcron
@@ -45,7 +52,18 @@ services:
     depends_on:
       - nextclouddb
       - nextcloudredis
+    networks:
+      - nextcloud
 
 volumes:
   db:
   nextcloud:
+
+networks:
+  nextcloud:
+    name: nextcloud
+    driver: bridge
+  adminer:
+    external:
+      name: adminer
+

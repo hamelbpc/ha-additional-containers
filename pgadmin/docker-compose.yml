@@ -15,6 +15,7 @@ services:
 
 networks:
   pgadmin:
-    external:
-      name: timescaledb
+    name: pgadmin
+    driver: bridge  
+      
     
