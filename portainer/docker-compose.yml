@@ -4,7 +4,7 @@ services:
     container_name: portainer
     image: portainer/portainer-ce
     # user/password:  admin/password
-    command: --admin-password "$$2y$$05$$cpeMkpZf2X4jH8cbuiy9xuEhrDIUIm7sGV0rXc.tpWva5aIiY3U8O" -H unix:///var/run/docker.sock
+    command: --admin-password "$$2y$$05$$BwROGrCmVbcCBRc.Ot0fSe/59CygRBXVjin0rWGOoW5l4.CeBXFjm" -H unix:///var/run/docker.sock
     ports:
       - "9000:9000"
     volumes:
