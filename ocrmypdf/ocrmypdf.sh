@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
-set -x
+#set -x
 
 function ocrmypdf()
 {
-docker run --rm -i  --user "$(id -u):$(id -g)" --workdir /data -v "$PWD/output:/data" jbarlow83/ocrmypdf --sidecar $3 - - <$1 >$2
+#docker run --rm -i  --user "$(id -u):$(id -g)" --workdir /data -v "$PWD/output:/data" jbarlow83/ocrmypdf --sidecar $3 - - <$1 >$2
+docker run --rm -i  --user "$(id -u):$(id -g)" --workdir /data -v "$PWD/output:/data" jbarlow83/ocrmypdf --deskew --clean --rotate-pages --sidecar $3 - - <$1 >$2
 }
 
 docker run --rm -i jbarlow83/ocrmypdf --version
