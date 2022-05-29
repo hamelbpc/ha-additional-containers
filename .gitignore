@@ -1,3 +1,4 @@
 netbox/*
 !./netbox/docker-compose.yml
-
+ocrmypdf/input/
+ocrmypdf/output/
