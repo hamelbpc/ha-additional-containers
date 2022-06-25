@@ -2,9 +2,9 @@ version: '3'
 services:
   portainer:
     container_name: portainer
-    image: portainer/portainer-ce
+    image: portainer/portainer-ce:2.11.1
     # user/password:  admin/password
-    command: --admin-password "$$2y$$05$$BwROGrCmVbcCBRc.Ot0fSe/59CygRBXVjin0rWGOoW5l4.CeBXFjm" -H unix:///var/run/docker.sock
+    command: --admin-password "$$2y$$05$$DZyeecfRtg7rZM2EF/88CezVLzSqlmMSeQfdkZF90682SfnxQFVOy" -H unix:///var/run/docker.sock
     ports:
       - "9000:9000"
     volumes:
