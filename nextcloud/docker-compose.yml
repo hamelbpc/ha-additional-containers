@@ -31,6 +31,7 @@ services:
       - "8088:80"
     volumes:
       - nextcloud:/var/www/html
+      - /mnt/nextcloud_local:/nextcloud_local:rw
     environment:
       - MYSQL_HOST=nextclouddb
       - REDIS_HOST=nextcloudredis

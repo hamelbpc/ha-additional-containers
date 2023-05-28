@@ -7,8 +7,8 @@ services:
     #restart: unless-stopped
     ports:
       - 9500:80
-    #devices:
-    #  - /dev/ttyUSB0:/dev/ttyUSB0
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
     volumes:
      - octoprint:/octoprint
     # uncomment the lines below to ensure camera streaming is enabled when
